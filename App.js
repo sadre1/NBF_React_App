@@ -43,7 +43,7 @@ const HeaderComponent = () => {
     </div>
   );
 };
-//config driven ui
+//Config driven
 const resturentList = [
   {
     name: "KFC",
@@ -56,7 +56,7 @@ const resturentList = [
   {
     name: "burger King",
     image:
-      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/56c9ab92bd79745fd152a30fa2525426",
+      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/aa77cb6fce4d94f3ad4b4e7fb42782db",
 
     cuesene: ["fried chicken", "kfc special"],
     rating: "4.2",
@@ -64,40 +64,38 @@ const resturentList = [
   {
     name: "mec do lund",
     image:
-      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/56c9ab92bd79745fd152a30fa2525426",
+      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/bb7ae131544c7d37e10fc5faf76f09d6",
 
     cuesene: ["fried chicken", "kfc special"],
     rating: "4.2",
   },
   {
-    name: "sub way",
+    name: "Subway",
     image:
-      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/56c9ab92bd79745fd152a30fa2525426",
+      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/1ace5fa65eff3e1223feb696c956b38b",
 
     cuesene: ["fried chicken", "kfc special"],
     rating: "4.2",
   },
 ];
-const RestrutentCard = () => {
+const RestrutentCard = ({ image, name, cuesene, rating }) => {
+  // const { image, name, cuesene, rating } = restaruant;
   return (
     <div className="card">
-      <img src={resturentList[0].image}></img>
-      <h2>{resturentList[0].name}</h2>
-      <h3>{resturentList[0].cuesene.join(",")}</h3>
-      <h4>{resturentList[0].rating} stars</h4>
+      <img src={image}></img>
+      <h2>{name}</h2>
+      <h3>{cuesene.join(",")}</h3>
+      <h4>{rating} stars</h4>
     </div>
   );
 };
-
+//never try to use index key 
 const BodyComponent = () => {
   return (
-    <div className="resturentcards">
-      <RestrutentCard />
-      <RestrutentCard />
-      <RestrutentCard />
-      <RestrutentCard />
-      <RestrutentCard />
-      <RestrutentCard />
+    <div className="resturent-cards">
+      {resturentList.map((resturant, index) => {
+        return <RestrutentCard {...resturant} key={index} />;
+      })}
     </div>
   );
 };

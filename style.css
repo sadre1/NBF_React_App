@@ -24,7 +24,7 @@
 .card >img{
     width: 100%;
 }
-.resturentcards{
+.resturent-cards{
     display: flex;
     flex-wrap: wrap;
 
