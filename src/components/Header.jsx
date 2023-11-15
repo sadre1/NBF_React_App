@@ -1,23 +1,3 @@
-/**
- * Header
- *  -Logo
- *  -Nav Items(Right Sided shifted)
- *  -cart
- * Body
- *    -search bar
- *    -RestrauntList
- *      -RestrauntCard(LOTS OF RESTO CARTS)
- *          -Images
- *          -Name
- *          -Rating
- *          -Cusines
- * Footer
- * -Links
- * -Copyright
- */
-import React from "react";
-import ReactDOM from "react-dom/client";
-
 const Title = () => {
   return (
     <img
@@ -27,7 +7,6 @@ const Title = () => {
     ></img>
   );
 };
-// Header component is functional component
 const HeaderComponent = () => {
   return (
     <div className="header">
@@ -43,76 +22,5 @@ const HeaderComponent = () => {
     </div>
   );
 };
-//Config driven
-const resturentList = [
-  {
-    name: "KFC",
-    image:
-      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/56c9ab92bd79745fd152a30fa2525426",
 
-    cuesene: ["fried chicken", "kfc special"],
-    rating: "4.2",
-  },
-  {
-    name: "burger King",
-    image:
-      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/aa77cb6fce4d94f3ad4b4e7fb42782db",
-
-    cuesene: ["fried chicken", "kfc special"],
-    rating: "4.2",
-  },
-  {
-    name: "mec do lund",
-    image:
-      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/bb7ae131544c7d37e10fc5faf76f09d6",
-
-    cuesene: ["fried chicken", "kfc special"],
-    rating: "4.2",
-  },
-  {
-    name: "Subway",
-    image:
-      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/1ace5fa65eff3e1223feb696c956b38b",
-
-    cuesene: ["fried chicken", "kfc special"],
-    rating: "4.2",
-  },
-];
-const RestrutentCard = ({ image, name, cuesene, rating }) => {
-  // const { image, name, cuesene, rating } = restaruant;
-  return (
-    <div className="card">
-      <img src={image}></img>
-      <h2>{name}</h2>
-      <h3>{cuesene.join(",")}</h3>
-      <h4>{rating} stars</h4>
-    </div>
-  );
-};
-//never try to use index key 
-const BodyComponent = () => {
-  return (
-    <div className="resturent-cards">
-      {resturentList.map((resturant, index) => {
-        return <RestrutentCard {...resturant} key={index} />;
-      })}
-    </div>
-  );
-};
-const FooterComponent = () => {
-  return <h1>footerComponent</h1>;
-};
-//App Layout
-const AppLayout = () => {
-  return (
-    <>
-      <HeaderComponent />
-      <BodyComponent />
-      <FooterComponent />
-    </>
-  );
-};
-// create root using createRoot
-const root = ReactDOM.createRoot(document.getElementById("root"));
-// passing react element inside root
-root.render(<AppLayout />);
+export default HeaderComponent;
