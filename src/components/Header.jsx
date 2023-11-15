@@ -11,6 +11,7 @@ const HeaderComponent = () => {
   return (
     <div className="header">
       <Title />
+      <h1>Nothing Before Food</h1>
       <div className="nav-items">
         <ul>
           <li>Home</li>

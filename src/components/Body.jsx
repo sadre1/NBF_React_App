@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { resturentList } from "../config";
+import { useState, useEffect } from "react";
+import { resturentList, swiggy_api_URL } from "../config";
 import RestrutentCard from "./RestrauntCard";
 
 function filterdata(searchText, restruants) {
   const filterdata = restruants.filter((restruant) =>
-    restruant.name.includes(searchText)
+    restruant?.info?.name.toLowerCase().includes(searchText.toLowerCase())
   );
   return filterdata;
 }
@@ -12,6 +12,17 @@ function filterdata(searchText, restruants) {
 const BodyComponent = () => {
   const [searchText, setSearchText] = useState(""); //Return array[variable name , seting variable function]
   const [restruant, setRestruant] = useState(resturentList);
+  useEffect(() => {
+    getRestaurent();
+  }, []);
+  async function getRestaurent() {
+    const restruantList = await fetch(swiggy_api_URL);
+    const json = await restruantList.json();
+    console.log(json);
+    setRestruant(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+  }
   return (
     <>
       <div className="searchcontainer">
@@ -36,7 +47,7 @@ const BodyComponent = () => {
       </div>
       <div className="resturent-cards">
         {restruant.map((resturant, index) => {
-          return <RestrutentCard {...resturant} key={index} />;
+          return <RestrutentCard {...resturant.info} key={index} />;
         })}
       </div>
     </>
