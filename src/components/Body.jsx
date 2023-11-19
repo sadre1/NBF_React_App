@@ -1,14 +1,10 @@
 import { useState, useEffect } from "react";
+
 import { resturentList, swiggy_api_URL } from "../config";
 import RestrutentCard from "./RestrauntCard";
 import Shimmer from "./shimmer";
-
-function filterdata(searchText, restruants) {
-  const filterdata = restruants.filter((restruant) =>
-    restruant?.info?.name.toLowerCase().includes(searchText.toLowerCase())
-  );
-  return filterdata;
-}
+import { Link } from "react-router-dom";
+import { filterdata } from "../utils/Helper";
 
 const BodyComponent = () => {
   const [searchText, setSearchText] = useState(""); //Return array[variable name , seting variable function]
@@ -48,6 +44,7 @@ const BodyComponent = () => {
       console.log(error);
     }
   }
+
   // if (Filteredrestruant.length === 0) return <h1>No Restaurent Found</h1>;
   return AllRestruant.length === 0 ? (
     <Shimmer />
@@ -75,7 +72,11 @@ const BodyComponent = () => {
       </div>
       <div className="resturent-cards">
         {Filteredrestruant.map((resturant, index) => {
-          return <RestrutentCard {...resturant.info} key={index} />;
+          return (
+            <Link className="link-card" to={"/restaurent/" + resturant.info.id}>
+              <RestrutentCard {...resturant.info} key={resturant.info.id} />
+            </Link>
+          );
         })}
       </div>
     </>

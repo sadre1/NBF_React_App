@@ -15,7 +15,7 @@
  * -Links
  * -Copyright
  */
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import HeaderComponent from "./components/Header";
 import BodyComponent from "./components/Body";
@@ -25,6 +25,8 @@ import AboutUS from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestrauntMenu";
+import Profile from "./components/Profile";
+// import Instamart from "./components/Instamart";
 
 // Header component is functional component
 
@@ -33,6 +35,7 @@ import RestaurantMenu from "./components/RestrauntMenu";
 //never try to use index key
 
 //App Layout
+const Instamart = lazy(() => import("./components/Instamart"));
 
 const AppLayout = () => {
   return (
@@ -56,16 +59,30 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: <AboutUS />,
+        children: [
+          {
+            path: "profile",
+            element: <Profile />,
+          },
+        ],
       },
       {
         path: "/contact",
         element: <Contact />,
       },
+      {
+        path: "/restaurent/:resId",
+        element: <RestaurantMenu />,
+      },
+      {
+        path: "/instamart",
+        element: (
+          <Suspense>
+            <Instamart />
+          </Suspense>
+        ),
+      },
     ],
-  },
-  {
-    path: "/restaurent/:id",
-    element: <RestaurantMenu />,
   },
 ]);
 // create root using createRoot

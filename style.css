@@ -13,14 +13,18 @@
     list-style-type: none;
     display: flex;
 }
-.nav-items >ul >li{
-    padding:10px;
+.link{
+  padding:10px;
+  text-decoration: none;
+}
+.link-card{
+  text-decoration: none;
 }
 .logo{
     width: 100px;
 }
 .card{
-    width: 150px;
+    width: 240px;
     border: 1px solid black;
     padding: 10px;
     margin-left: 20px;
@@ -93,3 +97,14 @@
       background-position: 1000px 0;
     }
   }
+
+.menu{
+  display: flex;
+  width: 50%;
+  border: 1px solid black;
+  padding: 10px;
+  margin-left: 20px;
+}
+.menu>img{
+  width: 50%;
+}
