@@ -16,6 +16,8 @@
  * -Copyright
  */
 import React, { Suspense, lazy } from "react";
+import Shimmer from "./components/shimmer";
+
 import ReactDOM from "react-dom/client";
 import HeaderComponent from "./components/Header";
 import BodyComponent from "./components/Body";
@@ -77,7 +79,7 @@ const appRouter = createBrowserRouter([
       {
         path: "/instamart",
         element: (
-          <Suspense>
+          <Suspense fallback={<Shimmer />}>
             <Instamart />
           </Suspense>
         ),

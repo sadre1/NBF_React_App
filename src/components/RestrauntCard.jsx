@@ -11,17 +11,13 @@ const RestrutentCard = ({
 }) => {
   // const { image, name, cuesene, rating } = restaruant;
   return (
-    <div className="card">
+    <div className="w-56 p-5 m-3 shadow-lg bg-pink-100 hover:bg-pink-200">
       <img src={IMG_CDN_URL + cloudinaryImageId} />
-      <h2>{name}</h2>
+      <h2 className="m-2 font-bold text-xl">{name}</h2>
       <h5>{cuisines.join(", ")}</h5>
       <h6>{area}</h6>
       <span>
-        <h4
-          style={
-            avgRating < 4 ? { backgroundColor: "red" } : { color: "white" }
-          }
-        >
+        <h4>
           <i className="fa-solid fa-star"></i>
           {avgRating}
         </h4>
