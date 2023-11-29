@@ -53,7 +53,7 @@ const BodyComponent = () => {
       <div className="p-5 bg-pink-50 my-2 shadow-lg">
         <input
           type="text"
-          className="p-2 text-white rounded-md focus:bg-green-50"
+          className="p-2 text-black rounded-md focus:bg-green-50"
           placeholder="searchRestraunt"
           value={searchText}
           onChange={(e) => {
