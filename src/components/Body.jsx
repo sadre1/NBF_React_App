@@ -70,7 +70,7 @@ const BodyComponent = () => {
           Search
         </button>
       </div>
-      <div className="flex flex-wrap bg-pink-50">
+      <div className="flex flex-wrap justify-center bg-pink-50">
         {Filteredrestruant.map((resturant, index) => {
           return (
             <Link className="link-card" to={"/restaurent/" + resturant.info.id}>

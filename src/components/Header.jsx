@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/UserContext";
 
 const Title = () => {
   return (
@@ -16,6 +17,7 @@ const Title = () => {
 const HeaderComponent = () => {
   const [logedin, setLogedIn] = useState("true");
   const isonline = useOnline();
+  const { user } = useContext(UserContext);
   return (
     <div className="flex justify-between bg-pink-100 shadow-lg">
       <Title />
@@ -43,23 +45,38 @@ const HeaderComponent = () => {
         </ul>
       </div>
       <h2 className="py-10">{isonline ? "✅" : "🔴"}</h2>
-      {logedin === "true" ? (
-        <button
-          onClick={() => {
-            setLogedIn("false");
-          }}
-        >
-          Log In
-        </button>
-      ) : (
-        <button
-          onClick={() => {
-            setLogedIn("true");
-          }}
-        >
-          Log Out
-        </button>
-      )}
+      <div className="flex flex-row items-center">
+        <div className="w-20 ">
+          <img
+            className="rounded"
+            src="https://p7.hiclipart.com/preview/442/17/110/computer-icons-user-profile-male-user.jpg"
+            alt="profile"
+          />
+        </div>
+        <div className=" p-2 flex flex-col">
+          <h1 className=" text-sm  uppercase">{user.name}</h1>
+          <h1 className="text-sm uppercase ">{user.email}</h1>
+        </div>
+      </div>
+      <div className="flex justify-center mr-10">
+        {logedin === "true" ? (
+          <button
+            onClick={() => {
+              setLogedIn("false");
+            }}
+          >
+            Log In
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              setLogedIn("true");
+            }}
+          >
+            Log Out
+          </button>
+        )}
+      </div>
     </div>
   );
 };
