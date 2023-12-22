@@ -50,10 +50,10 @@ const BodyComponent = () => {
     <Shimmer />
   ) : (
     <>
-      <div className="p-5 bg-pink-50 my-2 shadow-lg">
+      <div className="p-5 flex justify-center bg-pink-50 my-2 shadow-lg">
         <input
           type="text"
-          className="p-2 text-black rounded-md focus:bg-green-50"
+          className="p-4 w-96 h-12 text-black rounded-md focus:bg-green-50"
           placeholder="searchRestraunt"
           value={searchText}
           onChange={(e) => {
@@ -61,7 +61,7 @@ const BodyComponent = () => {
           }}
         ></input>
         <button
-          className="px-3 py-2 m-2 bg-purple-900 text-white rounded-lg hover:bg-purple-800 "
+          className="w-24 py-2 h-12 bg-purple-900 text-white rounded-lg hover:bg-purple-800 "
           onClick={() => {
             const data = filterdata(searchText, AllRestruant);
             setFilteredRestruant(data);

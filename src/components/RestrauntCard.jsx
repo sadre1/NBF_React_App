@@ -13,7 +13,7 @@ const RestrutentCard = ({
   // const { image, name, cuesene, rating } = restaruant;
   console.log("cuses", cuisines);
   return (
-    <div className="flex flex-col p-2 m-3 w-64  shadow-lg bg-pink-100 hover:bg-pink-200">
+    <div className="flex flex-col p-2 m-3 w-64  shadow-lg rounded-lg bg-pink-100 hover:bg-pink-200">
       <div className="w-30 h-30">
         <img className="rounded-lg" src={IMG_CDN_URL + cloudinaryImageId} />
       </div>
