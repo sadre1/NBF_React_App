@@ -28,6 +28,9 @@ import Error from "./components/Error";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestrauntMenu";
 import Profile from "./components/Profile";
+import { Provider } from "react-redux";
+import store from "./utils/store";
+import Cart from "./components/cart";
 // import Instamart from "./components/Instamart";
 
 // Header component is functional component
@@ -42,9 +45,11 @@ const Instamart = lazy(() => import("./components/Instamart"));
 const AppLayout = () => {
   return (
     <>
-      <HeaderComponent />
-      <Outlet />
-      <FooterComponent />
+      <Provider store={store}>
+        <HeaderComponent />
+        <Outlet />
+        <FooterComponent />
+      </Provider>
     </>
   );
 };
@@ -75,6 +80,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurent/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/instamart",
